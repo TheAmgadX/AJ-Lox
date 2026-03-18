@@ -41,6 +41,8 @@ private:
 
     char advance();
 
+    void advanceBlockComment();
+
     bool match(char expected);
 
     char peek() const;

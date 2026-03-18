@@ -60,6 +60,9 @@ void Scanner::scanToken(std::vector<Token>& tokens) {
                 while(peek() != '\n' && !isAtEnd()) {
                     advance();
                 }
+            } else if(match('*')) {
+                // block comment
+                advanceBlockComment();
             } else {
                 addToken(tokens, SLASH);
             }
@@ -90,6 +93,23 @@ bool Scanner::isAtEnd() const {
 
 char Scanner::advance() {
     return m_Source[m_Current++];
+}
+
+void Scanner::advanceBlockComment() {
+    while(!isAtEnd() && !(peek() == '*' && peekNext() == '/')) {
+        if(peek() == '\n') {
+            m_Line++;
+        }
+
+        advance();
+    }
+
+    if(isAtEnd()) {
+        AJ_Lox::error(m_Line, "Unterminated block comment");
+        return;
+    }
+
+    advance(); advance(); // consume the closing */
 }
 
 bool Scanner::match(char expected) {
