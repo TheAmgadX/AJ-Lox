@@ -35,11 +35,7 @@ public:
     Token(std::string lexeme, TokenType type, int line) : m_Lexeme(lexeme), m_Type(type), m_Line(line) {
         if (type == STRING || type == IDENTIFIER) {
             m_Literal = lexeme;
-        }
-        else if (type == NUMBER) {
-            m_Literal = std::stod(lexeme);
-        }
-        else {
+        } else {
             m_Literal = std::monostate{};
         }
     }

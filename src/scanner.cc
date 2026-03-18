@@ -152,10 +152,10 @@ void Scanner::addNumber(std::vector<Token>& tokens) {
     double value;
     auto [ptr, ec] = std::from_chars(text.data(), text.data() + text.size(), value);
 
-    value = double(value);
-
     if(ec == std::errc::result_out_of_range) {
         AJ_Lox::error(m_Line, "Number out of range at: " + text);
+        addToken(tokens, NUMBER, 0.0);
+        return;
     }
 
     addToken(tokens, NUMBER, value);

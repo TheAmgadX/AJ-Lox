@@ -1,3 +1,0 @@
-/home/aj-e/Programming_Codes/C++/Interpreter/build/CMakeFiles/lex.dir
-/home/aj-e/Programming_Codes/C++/Interpreter/build/CMakeFiles/edit_cache.dir
-/home/aj-e/Programming_Codes/C++/Interpreter/build/CMakeFiles/rebuild_cache.dir
